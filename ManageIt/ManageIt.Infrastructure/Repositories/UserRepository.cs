@@ -1,7 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using System.Collections.Generic;
+using System.Threading.Tasks;
 using ManageIt.Core.Context;
 using ManageIt.Repositories;
 using Microsoft.EntityFrameworkCore;
@@ -16,19 +14,23 @@ namespace ManageIt.Infrastructure.Repositories
         {
             _dbset = context.Set<User>();
         }
-        public void Add(User user)
+        public async Task AddAsync(User user)
         {
-            throw new NotImplementedException();
+            await _dbset.AddAsync(user);
         }
 
-        public IEnumerable<User> GetAll()
+        public async Task<IEnumerable<User>> GetAllAsync()
         {
-            return _dbset.ToList();
+            return await _dbset.ToListAsync();
         }
 
-        public User GetById(int id)
+        public async Task<User> GetByIdAsync(int id)
         {
-            return _dbset.Find(id);
+            return await _dbset.FindAsync(id);
+        }
+        public async Task<User> GetByEmailAsync(string email)
+        {
+            return await _dbset.SingleOrDefaultAsync(x=>x.Email == email);
         }
     }
 }

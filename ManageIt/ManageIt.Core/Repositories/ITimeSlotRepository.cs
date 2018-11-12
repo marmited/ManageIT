@@ -1,12 +1,13 @@
 ﻿using ManageIt.Core.Context;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace ManageIt.Repositories
 {
     public interface ITimeSlotRepository
     {
-        TimeSlot GetById(int id);
-        void Add(TimeSlot timeSlot);
-        IEnumerable<TimeSlot> GetAll();
+        Task<TimeSlot> GetByIdAsync(int id);
+        Task AddAsync(TimeSlot timeSlot);
+        Task<IEnumerable<TimeSlot>> GetAllAsync();
     }
 }

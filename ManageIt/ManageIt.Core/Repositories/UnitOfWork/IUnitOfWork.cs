@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
 using ManageIt.Repositories;
 
 namespace ManageIt.Core.Repositories.UnitOfWork
@@ -11,5 +12,6 @@ namespace ManageIt.Core.Repositories.UnitOfWork
         IRequestRepository Requests { get; }
         ITimeSlotRepository TimeSlots {get; }
         void Complete();
+        Task CompleteAsync();
     }
 }

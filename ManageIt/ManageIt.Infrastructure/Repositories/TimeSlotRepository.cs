@@ -1,7 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using System.Collections.Generic;
+using System.Threading.Tasks;
 using ManageIt.Core.Context;
 using ManageIt.Repositories;
 using Microsoft.EntityFrameworkCore;
@@ -16,19 +14,19 @@ namespace ManageIt.Infrastructure.Repositories
         {
             _dbset = context.Set<TimeSlot>();
         }
-        public void Add(TimeSlot timeSlot)
+        public async Task AddAsync(TimeSlot timeSlot)
         {
-            throw new NotImplementedException();
+            await _dbset.AddAsync(timeSlot);
         }
 
-        public IEnumerable<TimeSlot> GetAll()
+        public async Task<IEnumerable<TimeSlot>> GetAllAsync()
         {
-            return _dbset.ToList();
+            return await _dbset.ToListAsync();
         }
 
-        public TimeSlot GetById(int id)
+        public async Task<TimeSlot> GetByIdAsync(int id)
         {
-            return _dbset.Find(id);
+            return await _dbset.FindAsync(id);
         }
     }
 }

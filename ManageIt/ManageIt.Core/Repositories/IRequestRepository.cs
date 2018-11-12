@@ -1,12 +1,13 @@
 ﻿using ManageIt.Core.Context;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace ManageIt.Repositories
 {
     public interface IRequestRepository
     {
-        Request GetById(int id);
-        void Add(Request request);
-        IEnumerable<Request> GetAll();
+        Task<Request> GetByIdAsync(int id);
+        Task AddAsync(Request request);
+        Task<IEnumerable<Request>> GetAllAsync();
     }
 }

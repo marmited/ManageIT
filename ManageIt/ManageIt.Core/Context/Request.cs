@@ -7,10 +7,8 @@ namespace ManageIt.Core.Context
 {
     public class Request
     {
+        [Key]
         public int RequestId { get; set; }
-        public User Requester { get; set; }
-        [Required]
-        public User Owner { get; set; }
         [Required]
         public string Email { get; set; }
         public DateTime CreateDate { get; set; }

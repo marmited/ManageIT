@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 using ManageIt.Core.Context;
 using ManageIt.Repositories;
 using Microsoft.EntityFrameworkCore;
@@ -16,19 +17,19 @@ namespace ManageIt.Infrastructure.Repositories
         {
             _dbset = context.Set<Request>();
         }
-        public void Add(Request request)
+        public async Task AddAsync(Request request)
         {
-            throw new NotImplementedException();
+            await _dbset.AddAsync(request);
         }
 
-        public IEnumerable<Request> GetAll()
+        public async Task<IEnumerable<Request>> GetAllAsync()
         {
-            return _dbset.ToList();
+            return await _dbset.ToListAsync();
         }
 
-        public Request GetById(int id)
+        public async Task<Request> GetByIdAsync(int id)
         {
-            return _dbset.Find(id);
+            return await _dbset.FindAsync(id);
         }
     }
 }

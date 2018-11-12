@@ -1,10 +1,11 @@
-﻿using ManageIt.Core.Repositories.UnitOfWork;
+﻿using System.Threading.Tasks;
+using ManageIt.Core.Repositories.UnitOfWork;
 using ManageIt.Repositories;
 using ManageIt.Core.Context;
 
 namespace ManageIt.Infrastructure.Repositories.UnitOfWork
 {
-    class UnitOfWork : IUnitOfWork
+    public class UnitOfWork : IUnitOfWork
     {
         private readonly ManageItDbContext _context;
 
@@ -12,7 +13,7 @@ namespace ManageIt.Infrastructure.Repositories.UnitOfWork
         {
             _context = context;
             Users = new UserRepository(_context);
-            Requests = new RequestRepository(_context);
+            //Requests = new RequestRepository(_context);
             TimeSlots = new TimeSlotRepository(_context);
         }
 
@@ -25,6 +26,10 @@ namespace ManageIt.Infrastructure.Repositories.UnitOfWork
             _context.SaveChanges();
         }
 
+        public async Task CompleteAsync()
+        {
+            await _context.SaveChangesAsync();
+        }
 
         public void Dispose()
         {
