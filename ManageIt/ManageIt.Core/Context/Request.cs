@@ -5,7 +5,7 @@ using System.Text;
 
 namespace ManageIt.Core.Context
 {
-    class Request
+    public class Request
     {
         public int RequestId { get; set; }
         public User Requester { get; set; }

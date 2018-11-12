@@ -5,7 +5,7 @@ using System.Text;
 
 namespace ManageIt.Core.Context
 {
-    class TimeSlot
+    public class TimeSlot
     {
         public int TimeSlotId { get; set; }
         public int UserId { get; set; }

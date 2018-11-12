@@ -10,9 +10,9 @@ namespace ManageIt.Core.Context
         public ManageItDbContext(DbContextOptions options) : base(options)
         {
         }
-        private DbSet<User> Users { get; set; }
-        private DbSet<Request> Requests { get; set; }
-        private DbSet<TimeSlot> TimeSlots { get; set; }
+        public DbSet<User> Users { get; set; }
+        public DbSet<Request> Requests { get; set; }
+        public DbSet<TimeSlot> TimeSlots { get; set; }
 
     }
 }
