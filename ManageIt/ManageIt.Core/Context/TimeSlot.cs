@@ -10,10 +10,12 @@ namespace ManageIt.Core.Context
     {
         [Key]
         public int TimeSlotId { get; set; }
-        public User User { get; set; }
+        [Required]
+        [ForeignKey("Users")]
+        public int UserId { get; set; }
+        public virtual User User { get; set; }
         public DateTime StartTime { get; set; }
         public DateTime EndTime { get; set; }
-        public int RequestId { get; set; }
         public DateTime CreateDate { get; set; }
         public bool IsBlocked { get; set; }
         public bool IsDeleted { get; set; }
