@@ -37,7 +37,7 @@ namespace ManageIt.Web.Controllers
                 return View(model);
             }
 
-            UserDto user = new UserDto();//.Authenticate(model.Email, model.Password);
+            UserDto user = await _userService.AuthenticateAsync(model.Email, model.Password);
             if (user == null)
             {
                 ModelState.AddModelError("InvalidCredentials", "Could not valid your credentials");

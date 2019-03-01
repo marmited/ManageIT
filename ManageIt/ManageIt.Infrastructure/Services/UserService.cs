@@ -1,14 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Runtime.InteropServices.WindowsRuntime;
-using System.Text;
 using System.Threading.Tasks;
 using AutoMapper;
 using ManageIt.Core.Context;
 using ManageIt.Core.Repositories.UnitOfWork;
 using ManageIt.Infrastructure.Models.DTO;
 using ManageIt.Infrastructure.Services.Interfaces;
-using ManageIt.Repositories;
 
 namespace ManageIt.Infrastructure.Services
 {
@@ -23,6 +19,21 @@ namespace ManageIt.Infrastructure.Services
             _unitOfWork = unitOfWork;
             _encrypter = encrypter;
             _mapper = mapper;
+        }
+
+        public async Task<UserDto> AuthenticateAsync(string email, string password)
+        {
+            User user = await _unitOfWork.Users.GetByEmailAsync(email);
+            if (user != null)
+            {
+                string hash = _encrypter.GetHash(password, user.Salt);
+
+                if (user.PasswordHash == hash)
+                {
+                    return _mapper.Map<User, UserDto>(user);
+                }
+            }
+            return null;
         }
 
         public async Task<UserDto> GetByEmailAsync(string email)
@@ -40,7 +51,7 @@ namespace ManageIt.Infrastructure.Services
             if(user != null)
                 throw new Exception($"User with email: {email} already exists.");
 
-            string passwordSalt = _encrypter.GetSalt(password);
+            string passwordSalt = _encrypter.GetSalt();
 
             user = new User()
             {
