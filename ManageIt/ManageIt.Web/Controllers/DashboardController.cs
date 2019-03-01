@@ -2,10 +2,10 @@
 
 namespace ManageIt.Web.Controllers
 {
-    public class HomeController : Controller
+    public class DashboardController : Controller
     {
 
-        public HomeController()
+        public DashboardController()
         {
         }
 
