@@ -1,47 +1,98 @@
 ﻿
 @{
+    Layout = "_MainLayout";
     ViewData["Title"] = "Login";
 }
+
 @model ManageIt.Web.Models.ViewModels.User.RegisterViewModel
 
-<!-- Latest compiled and minified CSS -->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 
-<!-- Optional theme -->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
-
-<!-- Latest compiled and minified JavaScript -->
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-
-<h2>Sign in</h2>
-
-@using (Html.BeginForm("Register", "Auth", null, FormMethod.Post))
+@*@using (Html.BeginForm("Register", "Auth", null, FormMethod.Post))
 {
+    @Html.AntiForgeryToken()
     <div class="form-group">
         @Html.LabelFor(model => model.Email)
         @Html.TextBoxFor(model => model.Email, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.Email)
         <small id="emailHelp" class="form-text text-muted">Enter email address.</small>
     </div>
     <div class="form-group">
         @Html.LabelFor(model => model.FirstName)
         @Html.TextBoxFor(model => model.FirstName, new { @class = "form-control"})
+        @Html.ValidationMessageFor(m => m.FirstName)
         <small id="firstNameHelp" class="form-text text-muted">Enter your first name.</small>
     </div>
     <div class="form-group">
         @Html.LabelFor(model => model.LastName)
         @Html.TextBoxFor(model => model.LastName, new { @class = "form-control"})
+        @Html.ValidationMessageFor(m => m.LastName)
         <small id="lastNameHelp" class="form-text text-muted">Enter your last name.</small>
     </div>
     <div class="form-group">
         @Html.LabelFor(model => model.Password)
         @Html.TextBoxFor(model => model.Password, new { @class = "form-control"})
+        @Html.ValidationMessageFor(m => m.Password)
         <small id="passwordHelp" class="form-text text-muted">Enter your password.</small>
     </div>
     <div class="form-check">
         @Html.LabelFor(model => model.RepeatedPassword)
         @Html.TextBoxFor(model => model.RepeatedPassword, new { @class = "form-control"})
+        @Html.ValidationMessageFor(m => m.RepeatedPassword)
         <small id="confirmPasswordHelp" class="form-text text-muted">Confirm your password.</small>
     </div>
     <button type="submit" class="btn btn-primary">Sign in!</button>
-}
+}*@
 
+<main class="main-content col">
+    <div class="container-fluid px-4 my-auto h-100">
+        <div class="row no-gutters h-100">
+            <div class="col-lg-3 col-md-5 auth-form mx-auto my-auto padding-single-center-panel">
+                <div class="card">
+                    <div class="card-body">
+                        <!--<img class="auth-form__logo d-table mx-auto mb-3" src="images/shards-dashboards-logo.svg" alt="Shards Dashboards - Register Template">-->
+                        <h5 class="auth-form__title text-center mb-4">Create New Account</h5>
+                        @using (Html.BeginForm("Register", "Auth", null, FormMethod.Post))
+                        {
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.Email)
+                                @Html.TextBoxFor(model => model.Email, new { @class = "form-control" })
+                                @Html.ValidationMessageFor(m => m.Email)
+                            </div>
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.FirstName)
+                                @Html.TextBoxFor(model => model.FirstName, new { @class = "form-control" })
+                                @Html.ValidationMessageFor(m => m.FirstName)
+                            </div>
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.LastName)
+                                @Html.TextBoxFor(model => model.LastName, new { @class = "form-control" })
+                                @Html.ValidationMessageFor(m => m.LastName)
+                            </div>
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.Password)
+                                @Html.TextBoxFor(model => model.Password, new { @class = "form-control" })
+                                @Html.ValidationMessageFor(m => m.Password)
+                            </div>
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.RepeatedPassword)
+                                @Html.TextBoxFor(model => model.RepeatedPassword, new { @class = "form-control" })
+                                @Html.ValidationMessageFor(m => m.RepeatedPassword)
+                            </div>
+                            <div class="form-group mb-3 d-table mx-auto">
+                                <div class="custom-control custom-checkbox mb-1">
+                                    <input type="checkbox" class="custom-control-input" id="customCheck2">
+                                    <label class="custom-control-label" for="customCheck2">I agree with the <a href="#">Terms &amp; Conditions</a>.</label>
+                                </div>
+                            </div>
+                            <button type="submit" class="btn btn-pill btn-accent d-table mx-auto">Create Account</button>
+                        }
+                    </div>
+                </div>
+                <div class="auth-form__meta d-flex mt-4">
+                    <a href="@Url.Action("ForgotPassword", "Auth")">Forgot your password?</a>
+                    <a class="ml-auto" href="@Url.Action("Login", "Auth")">Sign in?</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>

@@ -18,11 +18,18 @@
     <!-- Navigation -->
     <nav class="navbar navbar-light bg-light static-top">
         <div class="container">
-            <a class="navbar-brand" href="#">
+            <a class="navbar-brand" href="@Url.Action("Index", "Home")">
                 <img id="main-logo" class="d-inline-block align-top mr-1" style="max-width: 25px;" src="/DesignRevision/images/shards-dashboards-logo.svg" alt="">
                 ManageIt
             </a>
-            <a class="btn btn-primary" href="#">Sign In</a>
+            @if (User.Identity.IsAuthenticated)
+            {
+                <a class="btn btn-primary" href="@Url.Action("Dashboard", "Index")">Dashboard</a>
+            }
+            else
+            {
+                <a class="btn btn-primary" href="@Url.Action("Login", "Auth")">Sign In</a>
+            }
         </div>
     </nav>
     @RenderBody()
@@ -30,6 +37,7 @@
     @Html.Partial("_MainFooterPartial")
     <!-- Bootstrap core JavaScript -->
     <script src="/Scripts/jquery/jquery.min.js"></script>
+    <script src="/Scripts/jquery/"></script>
     <script src="/Scripts/bootstrap/bootstrap.bundle.min.js"></script>
 </body>
 </html>

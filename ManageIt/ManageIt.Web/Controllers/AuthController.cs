@@ -27,6 +27,7 @@ namespace ManageIt.Web.Controllers
             return View();
         }
 
+
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
@@ -66,6 +67,13 @@ namespace ManageIt.Web.Controllers
             UserDto user = await _userService.RegisterAsync(model.Email, model.FirstName, model.LastName, model.Password);
 
             return await SignInUser(user);
+        }
+
+        [HttpGet]
+        [AllowAnonymous]
+        public IActionResult ForgotPassword()
+        {
+            return View();
         }
 
         [HttpPost]

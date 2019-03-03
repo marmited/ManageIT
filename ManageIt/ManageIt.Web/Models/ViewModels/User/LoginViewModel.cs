@@ -10,7 +10,7 @@ namespace ManageIt.Web.Models.ViewModels.User
         public string Email { get; set; }
 
         [Required]
-        [DisplayName("Hasło")]
+        [DisplayName("Password")]
         public string Password { get; set; }
     }
 }
