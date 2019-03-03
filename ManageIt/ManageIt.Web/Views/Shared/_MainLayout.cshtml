@@ -1,0 +1,43 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>ManageIt - save your time</title>
+    <!-- Bootstrap core CSS -->
+    <link href="/Styles/bootstrap/bootstrap.min.css" rel="stylesheet">
+    <link href="/Styles/landing-page/landing-page.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" id="main-stylesheet" data-version="1.1.0" href="/DesignRevision/styles/shards-dashboards.1.1.0.min.css">
+    <link rel="stylesheet" href="/DesignRevision/styles/extras.1.1.0.min.css">
+    <link rel="stylesheet" href="/Styles/common.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-light bg-light static-top">
+        <div class="container">
+            <a class="navbar-brand" href="@Url.Action("Index", "Home")">
+                <img id="main-logo" class="d-inline-block align-top mr-1" style="max-width: 25px;" src="/DesignRevision/images/shards-dashboards-logo.svg" alt="">
+                ManageIt
+            </a>
+            @if (User.Identity.IsAuthenticated)
+            {
+                <a class="btn btn-primary" href="@Url.Action("Dashboard", "Index")">Dashboard</a>
+            }
+            else
+            {
+                <a class="btn btn-primary" href="@Url.Action("Login", "Auth")">Sign In</a>
+            }
+        </div>
+    </nav>
+    @RenderBody()
+    <!-- Footer -->
+    @Html.Partial("_MainFooterPartial")
+    <!-- Bootstrap core JavaScript -->
+    <script src="/Scripts/jquery/jquery.min.js"></script>
+    <script src="/Scripts/jquery/"></script>
+    <script src="/Scripts/bootstrap/bootstrap.bundle.min.js"></script>
+</body>
+</html>

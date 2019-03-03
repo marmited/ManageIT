@@ -1,0 +1,11 @@
+﻿.padding-rem-05{
+    padding: 0.5rem;
+}
+
+.padding-single-center-panel{
+    padding: 5rem;
+}
+
+.field-validation-error{
+    color:red;
+}
