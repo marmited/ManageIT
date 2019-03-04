@@ -6,43 +6,6 @@
 
 @model ManageIt.Web.Models.ViewModels.User.RegisterViewModel
 
-
-@*@using (Html.BeginForm("Register", "Auth", null, FormMethod.Post))
-{
-    @Html.AntiForgeryToken()
-    <div class="form-group">
-        @Html.LabelFor(model => model.Email)
-        @Html.TextBoxFor(model => model.Email, new { @class = "form-control" })
-        @Html.ValidationMessageFor(m => m.Email)
-        <small id="emailHelp" class="form-text text-muted">Enter email address.</small>
-    </div>
-    <div class="form-group">
-        @Html.LabelFor(model => model.FirstName)
-        @Html.TextBoxFor(model => model.FirstName, new { @class = "form-control"})
-        @Html.ValidationMessageFor(m => m.FirstName)
-        <small id="firstNameHelp" class="form-text text-muted">Enter your first name.</small>
-    </div>
-    <div class="form-group">
-        @Html.LabelFor(model => model.LastName)
-        @Html.TextBoxFor(model => model.LastName, new { @class = "form-control"})
-        @Html.ValidationMessageFor(m => m.LastName)
-        <small id="lastNameHelp" class="form-text text-muted">Enter your last name.</small>
-    </div>
-    <div class="form-group">
-        @Html.LabelFor(model => model.Password)
-        @Html.TextBoxFor(model => model.Password, new { @class = "form-control"})
-        @Html.ValidationMessageFor(m => m.Password)
-        <small id="passwordHelp" class="form-text text-muted">Enter your password.</small>
-    </div>
-    <div class="form-check">
-        @Html.LabelFor(model => model.RepeatedPassword)
-        @Html.TextBoxFor(model => model.RepeatedPassword, new { @class = "form-control"})
-        @Html.ValidationMessageFor(m => m.RepeatedPassword)
-        <small id="confirmPasswordHelp" class="form-text text-muted">Confirm your password.</small>
-    </div>
-    <button type="submit" class="btn btn-primary">Sign in!</button>
-}*@
-
 <main class="main-content col">
     <div class="container-fluid px-4 my-auto h-100">
         <div class="row no-gutters h-100">
@@ -55,27 +18,27 @@
                         {
                             <div class="form-group">
                                 @Html.LabelFor(model => model.Email)
-                                @Html.TextBoxFor(model => model.Email, new { @class = "form-control" })
+                                @Html.TextBoxFor(model => model.Email, new { @class = "form-control" , @type = "email", @placeholder = "johnsmith@example.com" })
                                 @Html.ValidationMessageFor(m => m.Email)
                             </div>
                             <div class="form-group">
                                 @Html.LabelFor(model => model.FirstName)
-                                @Html.TextBoxFor(model => model.FirstName, new { @class = "form-control" })
+                                @Html.TextBoxFor(model => model.FirstName, new { @class = "form-control", @placeholder = "John" })
                                 @Html.ValidationMessageFor(m => m.FirstName)
                             </div>
                             <div class="form-group">
                                 @Html.LabelFor(model => model.LastName)
-                                @Html.TextBoxFor(model => model.LastName, new { @class = "form-control" })
+                                @Html.TextBoxFor(model => model.LastName, new { @class = "form-control", @placeholder = "Smith" })
                                 @Html.ValidationMessageFor(m => m.LastName)
                             </div>
                             <div class="form-group">
                                 @Html.LabelFor(model => model.Password)
-                                @Html.TextBoxFor(model => model.Password, new { @class = "form-control" })
+                                @Html.TextBoxFor(model => model.Password, new { @class = "form-control", @type = "password", @placeholder = "Enter password" })
                                 @Html.ValidationMessageFor(m => m.Password)
                             </div>
                             <div class="form-group">
                                 @Html.LabelFor(model => model.RepeatedPassword)
-                                @Html.TextBoxFor(model => model.RepeatedPassword, new { @class = "form-control" })
+                                @Html.TextBoxFor(model => model.RepeatedPassword, new { @class = "form-control", @type="password", @placeholder = "Repeat password" })
                                 @Html.ValidationMessageFor(m => m.RepeatedPassword)
                             </div>
                             <div class="form-group mb-3 d-table mx-auto">

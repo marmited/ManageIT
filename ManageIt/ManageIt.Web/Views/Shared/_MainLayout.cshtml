@@ -7,7 +7,7 @@
     <meta name="author" content="">
     <title>ManageIt - save your time</title>
     <!-- Bootstrap core CSS -->
-    <link href="/Styles/bootstrap/bootstrap.min.css" rel="stylesheet">
+    <link href="/lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="/Styles/landing-page/landing-page.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" id="main-stylesheet" data-version="1.1.0" href="/DesignRevision/styles/shards-dashboards.1.1.0.min.css">
@@ -24,7 +24,7 @@
             </a>
             @if (User.Identity.IsAuthenticated)
             {
-                <a class="btn btn-primary" href="@Url.Action("Dashboard", "Index")">Dashboard</a>
+                <a class="btn btn-primary" href="@Url.Action("Index", "Dashboard")">Dashboard</a>
             }
             else
             {
@@ -35,9 +35,13 @@
     @RenderBody()
     <!-- Footer -->
     @Html.Partial("_MainFooterPartial")
-    <!-- Bootstrap core JavaScript -->
-    <script src="/Scripts/jquery/jquery.min.js"></script>
-    <script src="/Scripts/jquery/"></script>
-    <script src="/Scripts/bootstrap/bootstrap.bundle.min.js"></script>
+    <!-- JavaScript Libraries -->
+    <script src="/lib/jquery/jquery.min.js"></script>
+<script src="/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="/lib/jquery-ajax-unobtrusive/dist/jquery.unobtrusive-ajax.min.js"></script>
+<script src="/lib/jquery-validate/jquery.validate.min.js"></script>
+
+    <script src="/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+
 </body>
 </html>

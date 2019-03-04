@@ -1,34 +1,8 @@
-﻿@*@using ManageIt.Web.Models.ViewModels.User
-    @{
-        Layout = "_MainLayout";
-        ViewData["Title"] = "Login";
-    }
-    @model LoginViewModel
-
-    <h2>Login</h2>
-
-    @using (Html.BeginForm("Login", "Auth", null, FormMethod.Post))
-    {
-        @Html.AntiForgeryToken()
-        <div class="form-group">
-            @Html.LabelFor(model => model.Email)
-            @Html.ValidationMessageFor(m => m.Email)
-            @Html.TextBoxFor(model => model.Email, new { @class = "form-control" })
-            <small id="emailHelp" class="form-text text-muted">Enter email address.</small>
-        </div>
-        <div class="form-group">
-            @Html.LabelFor(model => model.Password)
-            @Html.ValidationMessageFor(m => m.Password)
-            @Html.PasswordFor(model => model.Password, new { @class = "form-control" })
-            <small id="firstNameHelp" class="form-text text-muted">Enter your first name.</small>
-        </div>
-        @Html.ValidationMessage("InvalidCredentials")
-        <button type="submit" class="btn btn-primary">Sign in!</button>
-    }*@
-
+﻿
 @{
     Layout = "_MainLayout";
 }
+@model ManageIt.Web.Models.ViewModels.User.LoginViewModel
 
 <main class="main-content col">
     <div class="container-fluid px-4 my-auto h-100">
@@ -37,17 +11,21 @@
                 <div class="card">
                     <div class="card-body">
                         <h5 class="auth-form__title text-center mb-4">Login</h5>
-                        <form>
+                        @using (Html.BeginForm("Login", "Auth", null, FormMethod.Post))
+                        {
+                            @Html.ValidationMessage("InvalidCredentials")
                             <div class="form-group">
-                                <label for="exampleInputEmail1">Email address</label>
-                                <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+                                @Html.LabelFor(model => model.Email)
+                                @Html.TextBoxFor(model => model.Email, new { @class = "form-control", @type = "email", @placeholder = "johnsmith@example.com" })
+                                @Html.ValidationMessageFor(m => m.Email)
                             </div>
                             <div class="form-group">
-                                <label for="exampleInputPassword1">Password</label>
-                                <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+                                @Html.LabelFor(model => model.Password)
+                                @Html.TextBoxFor(model => model.Password, new { @class = "form-control", @type = "password", @placeholder = "Enter password" })
+                                @Html.ValidationMessageFor(m => m.Password)
                             </div>
                             <button type="submit" class="btn btn-pill btn-accent d-table mx-auto">Login</button>
-                        </form>
+                        }
                     </div>
                 </div>
                 <div class="auth-form__meta d-flex mt-4">
