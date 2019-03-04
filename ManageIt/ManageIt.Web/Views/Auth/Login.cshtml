@@ -13,6 +13,7 @@
                         <h5 class="auth-form__title text-center mb-4">Login</h5>
                         @using (Html.BeginForm("Login", "Auth", null, FormMethod.Post))
                         {
+                            @Html.AntiForgeryToken()
                             @Html.ValidationMessage("InvalidCredentials")
                             <div class="form-group">
                                 @Html.LabelFor(model => model.Email)

@@ -98,7 +98,7 @@ namespace ManageIt.Web.Controllers
 
             await HttpContext.SignInAsync(principal);
 
-            return RedirectToAction("Dashboard", "Home");
+            return RedirectToAction("Index", "Dashboard");
         }
     }
 }

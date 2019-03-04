@@ -16,6 +16,7 @@
                         <h5 class="auth-form__title text-center mb-4">Create New Account</h5>
                         @using (Html.BeginForm("Register", "Auth", null, FormMethod.Post))
                         {
+                            @Html.AntiForgeryToken()
                             <div class="form-group">
                                 @Html.LabelFor(model => model.Email)
                                 @Html.TextBoxFor(model => model.Email, new { @class = "form-control" , @type = "email", @placeholder = "johnsmith@example.com" })

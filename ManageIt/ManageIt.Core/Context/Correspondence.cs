@@ -6,18 +6,21 @@ using System.Text;
 
 namespace ManageIt.Core.Context
 {
-    public class TimeSlot
+    public class Correspondence
     {
         [Key]
-        public int TimeSlotId { get; set; }
+        public int CorrespondenceId { get; set; }
         [ForeignKey("Users")]
-        public int UserId { get; set; }
-        public virtual User User { get; set; }
-        public DateTime StartTime { get; set; }
-        public DateTime EndTime { get; set; }
+        public int SourceUserId { get; set; }
+        public virtual User SourceUser { get; set; }
+        [ForeignKey("Users")]
+        public int TargetUserId { get; set; }
+        public virtual User TargetUser { get; set; }
         public DateTime CreateDate { get; set; }
-        public bool IsBlocked { get; set; }
         public bool IsDeleted { get; set; }
         public DateTime DeleteDate { get; set; }
+
+
+
     }
 }

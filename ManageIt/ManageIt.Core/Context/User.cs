@@ -24,7 +24,8 @@ namespace ManageIt.Core.Context
         public string PasswordHash { get; set; }
         public DateTime CreateDate { get; set; }
         public bool IsBlocked { get; set; }
+        public DateTime? BlockDate { get; set; }
         public bool IsDeleted { get; set; }
-        public DateTime DeleteDate { get; set; }
+        public DateTime? DeleteDate { get; set; }
     }
 }
