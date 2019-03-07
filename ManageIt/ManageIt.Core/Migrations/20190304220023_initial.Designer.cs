@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace ManageIt.Core.Migrations
 {
     [DbContext(typeof(ManageItDbContext))]
-    [Migration("20190301204056_basicMigration")]
-    partial class basicMigration
+    [Migration("20190304220023_initial")]
+    partial class initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -20,6 +20,65 @@ namespace ManageIt.Core.Migrations
                 .HasAnnotation("ProductVersion", "2.1.4-rtm-31024")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+            modelBuilder.Entity("ManageIt.Core.Context.Correspondence", b =>
+                {
+                    b.Property<int>("CorrespondenceId")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<DateTime>("CreateDate");
+
+                    b.Property<DateTime>("DeleteDate");
+
+                    b.Property<bool>("IsDeleted");
+
+                    b.Property<int>("SourceUserId");
+
+                    b.Property<int>("TargetUserId");
+
+                    b.HasKey("CorrespondenceId");
+
+                    b.HasIndex("SourceUserId");
+
+                    b.HasIndex("TargetUserId");
+
+                    b.ToTable("Correspondences");
+                });
+
+            modelBuilder.Entity("ManageIt.Core.Context.Message", b =>
+                {
+                    b.Property<int>("MessageId")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Content")
+                        .IsRequired();
+
+                    b.Property<int>("CorrespondenceId");
+
+                    b.Property<DateTime>("CreateDate");
+
+                    b.Property<DateTime?>("DeleteDate");
+
+                    b.Property<bool>("IsDeleted");
+
+                    b.Property<int>("OrderNumber");
+
+                    b.Property<int>("SourceUserId");
+
+                    b.Property<int>("TargetUserId");
+
+                    b.HasKey("MessageId");
+
+                    b.HasIndex("CorrespondenceId");
+
+                    b.HasIndex("SourceUserId");
+
+                    b.HasIndex("TargetUserId");
+
+                    b.ToTable("Messages");
+                });
 
             modelBuilder.Entity("ManageIt.Core.Context.Request", b =>
                 {
@@ -81,9 +140,11 @@ namespace ManageIt.Core.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<DateTime?>("BlockDate");
+
                     b.Property<DateTime>("CreateDate");
 
-                    b.Property<DateTime>("DeleteDate");
+                    b.Property<DateTime?>("DeleteDate");
 
                     b.Property<string>("Email")
                         .IsRequired()
@@ -112,16 +173,48 @@ namespace ManageIt.Core.Migrations
                     b.ToTable("Users");
                 });
 
+            modelBuilder.Entity("ManageIt.Core.Context.Correspondence", b =>
+                {
+                    b.HasOne("ManageIt.Core.Context.User", "SourceUser")
+                        .WithMany()
+                        .HasForeignKey("SourceUserId")
+                        .OnDelete(DeleteBehavior.Restrict);
+
+                    b.HasOne("ManageIt.Core.Context.User", "TargetUser")
+                        .WithMany()
+                        .HasForeignKey("TargetUserId")
+                        .OnDelete(DeleteBehavior.Restrict);
+                });
+
+            modelBuilder.Entity("ManageIt.Core.Context.Message", b =>
+                {
+                    b.HasOne("ManageIt.Core.Context.Correspondence", "Correspondence")
+                        .WithMany()
+                        .HasForeignKey("CorrespondenceId")
+                        .OnDelete(DeleteBehavior.Restrict);
+
+                    b.HasOne("ManageIt.Core.Context.User", "SourceUser")
+                        .WithMany()
+                        .HasForeignKey("SourceUserId")
+                        .OnDelete(DeleteBehavior.Restrict);
+
+                    b.HasOne("ManageIt.Core.Context.User", "TargetUser")
+                        .WithMany()
+                        .HasForeignKey("TargetUserId")
+                        .OnDelete(DeleteBehavior.Restrict);
+                });
+
             modelBuilder.Entity("ManageIt.Core.Context.Request", b =>
                 {
                     b.HasOne("ManageIt.Core.Context.TimeSlot", "TimeSlot")
                         .WithMany()
                         .HasForeignKey("TimeSlotId")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .OnDelete(DeleteBehavior.Restrict);
 
                     b.HasOne("ManageIt.Core.Context.User", "User")
                         .WithMany()
-                        .HasForeignKey("UserId");
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Restrict);
                 });
 
             modelBuilder.Entity("ManageIt.Core.Context.TimeSlot", b =>
@@ -129,7 +222,7 @@ namespace ManageIt.Core.Migrations
                     b.HasOne("ManageIt.Core.Context.User", "User")
                         .WithMany()
                         .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .OnDelete(DeleteBehavior.Restrict);
                 });
 #pragma warning restore 612, 618
         }

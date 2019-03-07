@@ -1,20 +1,105 @@
 <Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
-    <TargetFramework>netcoreapp2.0</TargetFramework>
+    <TargetFramework>netcoreapp2.1</TargetFramework>
+    <AssemblyName>ManageIt.Web</AssemblyName>
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="wwwroot\" />
+    <Compile Remove="wwwroot\Scripts\bootstrap\**" />
+    <Compile Remove="wwwroot\Scripts\jquery\**" />
+    <Compile Remove="wwwroot\Styles\bootstrap\**" />
+    <Content Remove="wwwroot\Scripts\bootstrap\**" />
+    <Content Remove="wwwroot\Scripts\jquery\**" />
+    <Content Remove="wwwroot\Styles\bootstrap\**" />
+    <EmbeddedResource Remove="wwwroot\Scripts\bootstrap\**" />
+    <EmbeddedResource Remove="wwwroot\Scripts\jquery\**" />
+    <EmbeddedResource Remove="wwwroot\Styles\bootstrap\**" />
+    <None Remove="wwwroot\Scripts\bootstrap\**" />
+    <None Remove="wwwroot\Scripts\jquery\**" />
+    <None Remove="wwwroot\Styles\bootstrap\**" />
   </ItemGroup>
 
   <ItemGroup>
+    <Content Remove="Views\Message\Index.cshtml" />
+    <Content Remove="Views\Dashboard\Index.cshtml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="Views\Message\Index.cshtml" />
+    <None Include="Views\Dashboard\Index.cshtml" />
+    <None Include="wwwroot\DesignRevision\images\shards-dashboards-logo-danger.svg" />
+    <None Include="wwwroot\DesignRevision\images\shards-dashboards-logo-info.svg" />
+    <None Include="wwwroot\DesignRevision\images\shards-dashboards-logo-secondary.svg" />
+    <None Include="wwwroot\DesignRevision\images\shards-dashboards-logo-success.svg" />
+    <None Include="wwwroot\DesignRevision\images\shards-dashboards-logo-warning.svg" />
+    <None Include="wwwroot\DesignRevision\images\shards-dashboards-logo.svg" />
+    <None Include="wwwroot\DesignRevision\scripts\.DS_Store" />
+    <None Include="wwwroot\DesignRevision\scripts\app\app-blog-new-post.1.1.0.js" />
+    <None Include="wwwroot\DesignRevision\scripts\app\app-blog-new-post.1.1.0.min.js" />
+    <None Include="wwwroot\DesignRevision\scripts\app\app-blog-overview.1.1.0.js" />
+    <None Include="wwwroot\DesignRevision\scripts\app\app-blog-overview.1.1.0.min.js" />
+    <None Include="wwwroot\DesignRevision\scripts\app\app-components-overview.1.1.0.js" />
+    <None Include="wwwroot\DesignRevision\scripts\app\app-components-overview.1.1.0.min.js" />
+    <None Include="wwwroot\DesignRevision\scripts\extras.1.1.0.min.js" />
+    <None Include="wwwroot\DesignRevision\scripts\shards-dashboards.1.1.0.js" />
+    <None Include="wwwroot\DesignRevision\scripts\shards-dashboards.1.1.0.js.map" />
+    <None Include="wwwroot\DesignRevision\scripts\shards-dashboards.1.1.0.min.js" />
+    <None Include="wwwroot\DesignRevision\styles\.DS_Store" />
+    <None Include="wwwroot\DesignRevision\styles\scss\accent-variations\danger.scss" />
+    <None Include="wwwroot\DesignRevision\styles\scss\accent-variations\info.scss" />
+    <None Include="wwwroot\DesignRevision\styles\scss\accent-variations\secondary.scss" />
+    <None Include="wwwroot\DesignRevision\styles\scss\accent-variations\success.scss" />
+    <None Include="wwwroot\DesignRevision\styles\scss\accent-variations\warning.scss" />
+    <None Include="wwwroot\DesignRevision\styles\scss\blocks\_main-content.scss" />
+    <None Include="wwwroot\DesignRevision\styles\scss\blocks\_main-footer.scss" />
+    <None Include="wwwroot\DesignRevision\styles\scss\blocks\_main-navbar.scss" />
+    <None Include="wwwroot\DesignRevision\styles\scss\blocks\_main-sidebar.scss" />
+    <None Include="wwwroot\DesignRevision\styles\scss\blocks\_page-header.scss" />
+    <None Include="wwwroot\DesignRevision\styles\scss\components\_card-post.scss" />
+    <None Include="wwwroot\DesignRevision\styles\scss\components\_error.scss" />
+    <None Include="wwwroot\DesignRevision\styles\scss\plugins\_quill.scss" />
+    <None Include="wwwroot\DesignRevision\styles\scss\shards-dashboards.scss" />
+    <None Include="wwwroot\DesignRevision\styles\scss\templates\_blog-add-new-post.scss" />
+    <None Include="wwwroot\DesignRevision\styles\scss\templates\_blog-overview.scss" />
+    <None Include="wwwroot\DesignRevision\styles\scss\templates\_common.scss" />
+    <None Include="wwwroot\DesignRevision\styles\scss\utilities\_borders.scss" />
+    <None Include="wwwroot\DesignRevision\styles\scss\utilities\_general.scss" />
+    <None Include="wwwroot\DesignRevision\styles\scss\utilities\_text.scss" />
+    <None Include="wwwroot\DesignRevision\styles\scss\_alert.scss" />
+    <None Include="wwwroot\DesignRevision\styles\scss\_badge.scss" />
+    <None Include="wwwroot\DesignRevision\styles\scss\_button-group.scss" />
+    <None Include="wwwroot\DesignRevision\styles\scss\_buttons.scss" />
+    <None Include="wwwroot\DesignRevision\styles\scss\_card.scss" />
+    <None Include="wwwroot\DesignRevision\styles\scss\_custom-forms.scss" />
+    <None Include="wwwroot\DesignRevision\styles\scss\_custom-sliders.scss" />
+    <None Include="wwwroot\DesignRevision\styles\scss\_dropdown.scss" />
+    <None Include="wwwroot\DesignRevision\styles\scss\_icons.scss" />
+    <None Include="wwwroot\DesignRevision\styles\scss\_images.scss" />
+    <None Include="wwwroot\DesignRevision\styles\scss\_input-group.scss" />
+    <None Include="wwwroot\DesignRevision\styles\scss\_list-group.scss" />
+    <None Include="wwwroot\DesignRevision\styles\scss\_navbar.scss" />
+    <None Include="wwwroot\DesignRevision\styles\scss\_overrides.scss" />
+    <None Include="wwwroot\DesignRevision\styles\scss\_reboot.scss" />
+    <None Include="wwwroot\DesignRevision\styles\scss\_utilities.scss" />
+    <None Include="wwwroot\DesignRevision\styles\scss\_variables.scss" />
+    <None Include="wwwroot\Styles\Layout\MainLayout.css" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="jQuery" Version="3.3.1" />
     <PackageReference Include="Microsoft.AspNetCore.All" Version="2.0.9" />
+    <PackageReference Include="Microsoft.jQuery.Unobtrusive.Ajax" Version="3.2.6" />
+    <PackageReference Include="Microsoft.jQuery.Unobtrusive.Validation" Version="3.2.11" />
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.0.3" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\ManageIt.Infrastructure\ManageIt.Infrastructure.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="wwwroot\Scripts\" />
   </ItemGroup>
 
 </Project>

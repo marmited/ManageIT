@@ -1,0 +1,129 @@
+﻿@{
+    Layout = "_AdministratorLayout";
+}
+
+@section Styles {
+    <link type="text/css" href="/lib/overlayscrollbars/css/OverlayScrollbars.min.css" rel="stylesheet" media="all" />
+}
+
+<!-- Page Header -->
+<div class="page-header row no-gutters py-4">
+    <div class="col-12 col-sm-4 text-center text-sm-left mb-0">
+        <span class="text-uppercase page-subtitle">Messages</span>
+        <h3 class="page-title">Correspondences</h3>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-lg-12">
+        <div class="card card-small go-stats correspondence-dimentions">
+            <div class="card-header border-bottom">
+                <h6 class="m-0">Last correspondences</h6>
+                <div class="block-handle"></div>
+            </div>
+            <div class="card-body py-0 scroll-pane nano">
+                <ul class="list-group list-group-small list-group-flush">
+                    <a href="#">
+                    <li class="list-group-item d-flex row px-0">
+
+                        <div class="col-lg-3 col-md-4 col-sm-4 col-3">
+                            <h6 class="go-stats__label mb-1">Josh Smith</h6>
+                            <div class="go-stats__meta">
+                                <span class="mr-2">
+                                    <strong class="text-success">291</strong> Messages
+                                </span>
+                                @*<span class="d-block d-sm-inline">
+                            <strong class="text-success">$192.00</strong> Value
+                        </span>*@
+                            </div>
+                        </div>
+                        <div class="col-lg-6 col-md-6 col-sm-6 col-6 d-flex">
+                            <div class="go-stats__value text-left ml-auto">
+                                <h6 class="go-stats__label mb-1"></h6>
+                                <span class="go-stats__meta">Lorem ipsum dasjdahd jhdas daj dashjd as dshagd adsjdh asdabdnvnqw dashjd as dshagd adsjdh asdabdnvnqw dashjd as ...</span>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-2 col-sm-2 col-3 d-flex">
+                            <div class="go-stats__value text-right ml-auto">
+                                <span class="go-stats__meta">Message date: 2.03.2018</span>
+                            </div>
+                        </div>
+                    </li>
+                    </a>
+
+                    <li class="list-group-item d-flex row px-0">
+                        <div class="col-lg-3 col-md-4 col-sm-4 col-3">
+                            <h6 class="go-stats__label mb-1">Josh Smith</h6>
+                            <div class="go-stats__meta">
+                                <span class="mr-2">
+                                    <strong class="text-success">291</strong> Messages
+                                </span>
+                                @*<span class="d-block d-sm-inline">
+                        <strong class="text-success">$192.00</strong> Value
+                    </span>*@
+                            </div>
+                        </div>
+                        <div class="col-lg-6 col-md-6 col-sm-6 col-6 d-flex">
+                            <div class="go-stats__value text-left ml-auto">
+                                <h6 class="go-stats__label mb-1"></h6>
+                                <span class="go-stats__meta">Lorem ipsum dasjdahd jhdas daj dashjd as dshagd adsjdh asdabdnvnqw dashjd as dshagd adsjdh asdabdnvnqw dashjd as ...</span>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-2 col-sm-2 col-3 d-flex">
+                            <div class="go-stats__value text-right ml-auto">
+                                <span class="go-stats__meta">Message date: 2.03.2018</span>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="list-group-item d-flex row px-0">
+                        <div class="col-lg-3 col-md-4 col-sm-4 col-3">
+                            <h6 class="go-stats__label mb-1">Josh Smith</h6>
+                            <div class="go-stats__meta">
+                                <span class="mr-2">
+                                    <strong class="text-success">291</strong> Messages
+                                </span>
+                                @*<span class="d-block d-sm-inline">
+                        <strong class="text-success">$192.00</strong> Value
+                    </span>*@
+                            </div>
+                        </div>
+                        <div class="col-lg-6 col-md-6 col-sm-6 col-6 d-flex">
+                            <div class="go-stats__value text-left ml-auto">
+                                <h6 class="go-stats__label mb-1"></h6>
+                                <span class="go-stats__meta">Lorem ipsum dasjdahd jhdas daj dashjd as dshagd adsjdh asdabdnvnqw dashjd as dshagd adsjdh asdabdnvnqw dashjd as ...</span>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-2 col-sm-2 col-3 d-flex">
+                            <div class="go-stats__value text-right ml-auto">
+                                <span class="go-stats__meta">Message date: 2.03.2018</span>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="card-footer border-top">
+
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+@section Scripts {
+    <script type="text/javascript" src="/lib/overlayscrollbars/js/jquery.overlayScrollbars.min.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            var instance = OverlayScrollbars(document.getElementsByClassName("nano"), {
+                className: "os-theme-dark",
+                resize: "none",
+                overflowBehavior : {
+                    x : "hidden",
+                    y : "scroll"
+                },
+                sizeAutoCapable: true,
+                paddingAbsolute: true
+            });
+        });
+    </script>
+}
+

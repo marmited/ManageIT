@@ -28,6 +28,11 @@
       "provider": "unpkg",
       "library": "bootstrap@4.1.3",
       "destination": "wwwroot/lib/bootstrap/"
+    },
+    {
+      "provider": "cdnjs",
+      "library": "overlayscrollbars@1.6.3",
+      "destination": "wwwroot/lib/overlayscrollbars/"
     }
-  ]
+]
 }
